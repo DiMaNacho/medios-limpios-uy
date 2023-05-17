@@ -1,0 +1,16 @@
+{
+  "manifest_version": 2,
+  "name": "Mi extensión",
+  "version": "1.0",
+  "permissions": ["tabs", "http://*/*", "https://*/*"],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://www.elobservador.com.uy/*"],
+      "js": ["content.js"]
+    }
+  ]
+}
