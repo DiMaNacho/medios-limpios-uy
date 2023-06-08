@@ -9,7 +9,12 @@
   },
   "content_scripts": [
     {
-      "matches": ["*://www.elobservador.com.uy/*"],
+      "matches": [
+        "*://www.elobservador.com.uy/*",
+        "*://elobservador.com.uy/*",
+        "*://www.elpais.com.uy/*",
+        "*://elpais.com.uy/*"
+      ],
       "js": ["content.js"]
     }
   ]
