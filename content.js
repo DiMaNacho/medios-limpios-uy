@@ -1,4 +1,4 @@
-const version = "v1.0.31";
+const version = "v1.0.33";
 
 const borrarElementos = (elementos) =>
   elementos.forEach(($el) => $el !== null && $el.remove());
@@ -75,10 +75,7 @@ const limpiarElPais = (sendResponse) => {
   sendResponse({ content: "ok" });
 };
 
-chrome.runtime.onMessage.addListener(
-  (request, sender, sendResponse) =>
-    ({
-      observador: limpiarObservador(sendResponse),
-      elpais: limpiarElPais(sendResponse),
-    }[request.action])
-);
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  if (request.action === "observador") limpiarObservador(sendResponse);
+  if (request.action === "elpais") limpiarElPais(sendResponse);
+});

@@ -1,15 +1,10 @@
-chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
-  if (
-    changeInfo.status === "complete" &&
-    tab.url.includes("elobservador.com.uy") &&
-    tab.url.startsWith("http")
-  )
+chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+  const isComplete = changeInfo.status === "complete";
+  const isWeb = tab.url.startsWith("http");
+
+  if (isComplete && isWeb && tab.url.includes("elobservador.com.uy"))
     chrome.tabs.sendMessage(tabId, { action: "observador" });
 
-  if (
-    changeInfo.status === "complete" &&
-    tab.url.includes("elpais.com.uy") &&
-    tab.url.startsWith("http")
-  )
+  if (isComplete && isWeb && tab.url.includes("elpais.com.uy"))
     chrome.tabs.sendMessage(tabId, { action: "elpais" });
 });
