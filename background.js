@@ -5,6 +5,6 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   if (isComplete && isWeb && tab.url.includes("elobservador.com.uy"))
     chrome.tabs.sendMessage(tabId, { action: "observador" });
 
-  if (isComplete && isWeb && tab.url.includes("elpais.com.uy"))
+  if (isWeb && tab.url.includes("elpais.com.uy"))
     chrome.tabs.sendMessage(tabId, { action: "elpais" });
 });
