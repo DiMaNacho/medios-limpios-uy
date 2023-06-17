@@ -11,13 +11,13 @@ const limpiarObservador = (sendResponse) => {
     mutations.forEach(({ type }) => {
       if (type === "childList") {
         const elementos = [
-          ...document.querySelectorAll("#suscripcion_btn"),
+          ...document.querySelectorAll(".auspicios"),
+          ...document.querySelectorAll(".contenedor__publicidad"),
           ...document.querySelectorAll(".mensaje_paywall"),
           ...document.querySelectorAll(".mensaje_paywall2"),
           ...document.querySelectorAll(".publicidad"),
-          ...document.querySelectorAll(".contenedor__publicidad"),
           ...document.querySelectorAll("#modalLogin"),
-          ...document.querySelectorAll(".auspicios"),
+          ...document.querySelectorAll("#suscripcion_btn"),
         ];
 
         if (elementos.length > 0) borrarElementos(elementos);
@@ -51,13 +51,22 @@ const limpiarObservador = (sendResponse) => {
 const limpiarElPais = (sendResponse) => {
   console.log("limpiarElPais", version);
 
-  borrarElementos([
-    document.querySelector("#popupLogin"),
-    document.querySelector("#floatingContainer"),
-    document.querySelector(".Page-above.loaded"),
-  ]);
-
   const $body = document.body;
+  const observer = new MutationObserver((mutations) =>
+    mutations.forEach(({ type }) => {
+      if (type === "childList") {
+        const elementos = [
+          ...document.querySelectorAll(".floatingContainer"),
+          ...document.querySelectorAll(".Page-above.loaded"),
+          ...document.querySelectorAll("#popupLogin"),
+        ];
+
+        if (elementos.length > 0) borrarElementos(elementos);
+        else observer.disconnect();
+      }
+    })
+  );
+  observer.observe($body, { childList: true, subtree: true });
 
   $body.style = "overflow: initial;";
 
@@ -66,7 +75,10 @@ const limpiarElPais = (sendResponse) => {
   sendResponse({ content: "ok" });
 };
 
-chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-  if (request.action === "observador") limpiarObservador(sendResponse);
-  if (request.action === "elpais") limpiarElPais(sendResponse);
-});
+chrome.runtime.onMessage.addListener(
+  (request, sender, sendResponse) =>
+    ({
+      observador: limpiarObservador(sendResponse),
+      elpais: limpiarElPais(sendResponse),
+    }[request.action])
+);
