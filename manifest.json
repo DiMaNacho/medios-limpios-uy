@@ -1,11 +1,6 @@
 {
-  "manifest_version": 2,
-  "name": "Mi extensión",
-  "version": "1.0",
-  "permissions": ["tabs", "http://*/*", "https://*/*"],
   "background": {
-    "scripts": ["background.js"],
-    "persistent": false
+    "service_worker": "./background.js"
   },
   "content_scripts": [
     {
@@ -17,5 +12,17 @@
       ],
       "js": ["content.js"]
     }
-  ]
+  ],
+  "description": "Quitando todo lo que complica la lectura de notas en distintos portales de noticias uruguayos.",
+  "icons": {
+    "16": "./icons/logo16x16.png",
+    "32": "./icons/logo32x32.png",
+    "48": "./icons/logo48x48.png",
+    "64": "./icons/logo64x64.png",
+    "128": "./icons/logo128x128.png"
+  },
+  "manifest_version": 3,
+  "name": "Medios Limpios UY",
+  "permissions": ["tabs", "http://*/*", "https://*/*"],
+  "version": "1.0.0"
 }
