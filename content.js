@@ -1,51 +1,61 @@
+const version = "v1.0.31";
+
+const borrarElementos = (elementos) =>
+  elementos.forEach(($el) => $el !== null && $el.remove());
+
 const limpiarObservador = (sendResponse) => {
-  console.log("limpiarObservador");
-  const $content = document.querySelector("#cuerpo_piano");
+  console.log("limpiarObservador", version);
 
-  if ($content !== null) {
+  const $body = document.body;
+  const observer = new MutationObserver((mutations) =>
+    mutations.forEach(({ type }) => {
+      if (type === "childList") {
+        const elementos = [
+          ...document.querySelectorAll("#suscripcion_btn"),
+          ...document.querySelectorAll(".mensaje_paywall"),
+          ...document.querySelectorAll(".mensaje_paywall2"),
+          ...document.querySelectorAll(".publicidad"),
+          ...document.querySelectorAll(".contenedor__publicidad"),
+          ...document.querySelectorAll("#modalLogin"),
+          ...document.querySelectorAll(".auspicios"),
+        ];
+
+        if (elementos.length > 0) borrarElementos(elementos);
+        else observer.disconnect();
+      }
+    })
+  );
+  observer.observe($body, { childList: true, subtree: true });
+
+  const $cuerpo = document.querySelector(".cuerpo.intro_");
+
+  if ($cuerpo !== null) {
+    const $content = document.querySelector("#cuerpo_piano");
     const contenidoOriginal = $content.innerHTML;
-
-    // Crear una instancia del observador de mutación
-    var observer = new MutationObserver(function (mutations) {
-      mutations.forEach(function (mutation) {
-        // Verificar si el contenido de la etiqueta ha cambiado y está vacío
-        if (mutation.type === "childList" && $content.innerHTML === "") {
-          // Inyectar el contenido de la variable "content"
-          $content.innerHTML = contenidoOriginal;
-
-          const $fade = document.querySelector(".cuerpo.fade");
-          if ($fade !== null) $fade.classList.remove("fade");
-
-          const $registro = document.querySelector(".mensaje_paywall2");
-          if ($registro !== null) $registro.remove();
+    const observerContenido = new MutationObserver((mutations) =>
+      mutations.forEach(({ type }) => {
+        if (type === "childList" && $content.innerHTML === "") {
+          $cuerpo.innerHTML = contenidoOriginal;
+          observerContenido.disconnect();
         }
-      });
-    });
-
-    // Configurar y comenzar a observar la etiqueta HTML
-    var observerConfig = { childList: true, subtree: true };
-    observer.observe($content, observerConfig);
+        if ($cuerpo.classList.contains("fade"))
+          $cuerpo.classList.remove("fade");
+      })
+    );
+    observerContenido.observe($cuerpo, { childList: true, subtree: true });
   }
-
-  const $fade = document.querySelector(".cuerpo.fade");
-  if ($fade !== null) $fade.classList.remove("fade");
-
-  const $banners = document.querySelectorAll(".publicidad");
-  if ($banners !== null) $banners.forEach(($banner) => $banner.remove());
 
   sendResponse({ content: "ok" });
 };
 
 const limpiarElPais = (sendResponse) => {
-  console.log("limpiarElPais");
+  console.log("limpiarElPais", version);
 
-  const paraBorrar = [
+  borrarElementos([
     document.querySelector("#popupLogin"),
     document.querySelector("#floatingContainer"),
     document.querySelector(".Page-above.loaded"),
-  ];
-
-  paraBorrar.forEach(($el) => $el !== null && $el.remove());
+  ]);
 
   const $body = document.body;
 
