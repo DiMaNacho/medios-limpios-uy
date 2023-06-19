@@ -17,6 +17,7 @@ if (typeof limpiarObservador !== "function")
             ...document.querySelectorAll(".publicidad"),
             ...document.querySelectorAll("#modalLogin"),
             ...document.querySelectorAll("#suscripcion_btn"),
+            ...document.querySelectorAll(`script[src*="all.min"]`),
           ];
 
           if (elementos.length > 0) borrarElementos(elementos);
