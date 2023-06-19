@@ -1,3 +1,77 @@
+::root {
+  --color-secondary-bg: #fff;
+}
+
+html[data-theme="dark"] {
+  --color-primary: #06416a;
+  --color-secondary: #fcee21;
+  --color-tertiary: #eaf4ff;
+
+  --color-primary-text: #fffffe;
+  --color-primary-text-inverse: #1b232f;
+  --color-primary-text-translucid: #33333370;
+  --color-primary-text-inverse-translucid: #ffffff40;
+  --color-secondary-text: var(--color-primary-text);
+  --color-secondary-text-inverse: #ffffff;
+  --color-tertiary-text: #fffffe;
+  --color-tertiary-inverse: #ffffff;
+  --color-site-bg: #1b232f;
+  --color-secondary-bg: #2d3849;
+  --color-border: #bebebe;
+  --color-article-backdrop: #ebebeb;
+
+  --color-header-bg: #004f88;
+  --color-header-secondary-bg: var(--color-border);
+  --color-header-text: var(--color-primary-text);
+  --color-header-border: var(--color-border);
+
+  --color-hat-bg: #000000;
+  --color-hat-text: var(--color-primary-text-inverse);
+
+  --color-heading-bg: #808080;
+
+  --color-footer-bg: #004f88;
+  --color-footer-border: var(--color-primary);
+  --color-footer-text: var(--color-primary-text-inverse);
+
+  --color-banner-bg: #d31141;
+  --color-banner-text: var(--color-primary-text-inverse);
+
+  --color-link-text: var(--color-primary-text);
+  --color-link-text-hover: var(--color-primary);
+
+  --color-button-bg: var(--color-primary);
+  --color-button-hover-bg: var(--color-primary-text-inverse);
+  --color-button-hover-text: var(--color-primary);
+  --color-button-border: var(--color-primary);
+  --color-button-text: var(--color-primary-text-inverse);
+  --color-button-rs: var(--color-button-bg);
+
+  --color-list-title: var(--color-primary-text);
+  --color-list-border: var(--color-border);
+  --color-category-text: var(--color-primary);
+
+  --color-gray: #dddddd;
+  --color-dark-gray: #333333;
+
+  --color-featured-mid: #d2d9ba;
+  --color-featured-primary: #eaf0d6;
+  --color-featured-secondary: #879a49;
+
+  --color-section-eme: #512972;
+  --color-section-ovacion: #489052;
+  --color-section-negocios: #f5e5d5;
+  --color-section-premium: #222d33;
+  --color-section-premium-secondary: #ebd46a;
+  --color-section-tvshow: #a753a0;
+
+  --color-primary-translucid: #06416a40;
+  --color-section-eme-translucid: #51297240;
+  --color-section-ovacion-translucid: #48905240;
+  --color-section-premium-translucid: #222d3340;
+  --color-section-tvshow-translucid: #a753a040;
+}
+
 body .ArticlePage-lede-content:before,
 body .AuthorPage-lede-content:before,
 body .GalleryPage-lede-content:before,
@@ -8,16 +82,88 @@ body .Page-above.loaded {
 }
 
 @media only screen and (min-width: 768px) {
+  body.Page-body,
+  body.WhitePage-body {
+    max-width: 100%;
+    overflow-x: hidden;
+    width: 100vw;
+  }
+
   body .ArticlePage-lede-content,
   body .AuthorPage-lede-content,
   body .GalleryPage-lede-content {
     padding: 3rem 0;
   }
+
   html.AuthorPage body .Page-content .Page-twoColumn,
   html.ArticlePage body .Page-content .Page-twoColumn,
   html.GalleryPage body .Page-content .Page-twoColumn {
-    grid-template-columns: minmax(auto, 800px) 1fr;
+    grid-template-columns: minmax(auto, 900px) 1fr;
     padding: 0;
+  }
+
+  html.ArticlePage
+    body
+    .Page-content
+    .Page-twoColumn
+    .Page-aside
+    .HtmlModule
+    > br {
+    display: none;
+  }
+
+  body .ListFeatured {
+    background-color: var(--color-secondary-bg);
+  }
+
+  body .toggle-darkmode .theme-switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+  }
+
+  body .toggle-darkmode .theme-switch input {
+    display: none;
+  }
+
+  body .toggle-darkmode .slider {
+    background-color: #ffffd6;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: 0.4s;
+  }
+
+  body .toggle-darkmode .slider:before {
+    background-color: #445367;
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: 0.4s;
+    width: 26px;
+  }
+
+  body .toggle-darkmode input:checked + .slider {
+    background-color: #445367;
+  }
+
+  body .toggle-darkmode input:checked + .slider:before {
+    background-color: #ffffd6;
+    transform: translateX(26px);
+  }
+
+  body .toggle-darkmode .slider.round {
+    border-radius: 34px;
+  }
+
+  body .toggle-darkmode .slider.round:before {
+    border-radius: 50%;
   }
 }
 

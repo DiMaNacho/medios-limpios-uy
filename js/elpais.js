@@ -5,9 +5,52 @@ if (typeof limpiarElPais !== "function")
     const borrarElementos = (elementos) =>
       elementos.forEach(($el) => $el !== null && $el.remove());
 
-    const $body = document.body;
-    $body.style = "overflow: initial;";
+    const switchTheme = (e) => {
+      if (e.target.checked) {
+        document.documentElement.setAttribute("data-theme", "dark");
+        localStorage.setItem("theme", "dark");
+      } else {
+        document.documentElement.setAttribute("data-theme", "light");
+        localStorage.setItem("theme", "light");
+      }
+    };
 
+    const darkMode = () => {
+      const toggleClass = "toggle-darkmode";
+      if (document.querySelector(`.${toggleClass}`) === null) {
+        const $switch = document.createElement("div");
+        const $posicion = document.querySelector(".Page-header-authentication");
+
+        $switch.innerHTML = `
+          <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider round"></div>
+          </label>
+        `;
+        $switch.classList.add("toggle-darkmode");
+
+        $posicion.prepend($switch);
+      }
+
+      const $toggleSwitch = document.querySelector(
+        '.theme-switch input[type="checkbox"]'
+      );
+      const currentTheme = localStorage.getItem("theme");
+
+      if (currentTheme) {
+        document.documentElement.setAttribute("data-theme", currentTheme);
+
+        if (currentTheme === "dark") {
+          $toggleSwitch.checked = true;
+        }
+      }
+
+      $toggleSwitch.addEventListener("change", switchTheme, false);
+    };
+
+    darkMode();
+
+    const $body = document.body;
     const observer = new MutationObserver((mutations) =>
       mutations.forEach(({ type }) => {
         if (type === "childList") {
