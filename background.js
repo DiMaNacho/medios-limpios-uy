@@ -3,20 +3,20 @@ const webs = [
   { nombre: "elpais", url: "elpais.com.uy" },
 ];
 
-const processSite = async ({ tabId, url, web }) => {
+const processSite = ({ tabId, url, web }) => {
   if (url.hostname.includes(web.url)) {
-    await chrome.scripting.executeScript({
+    chrome.scripting.executeScript({
       target: { tabId },
       files: [`./js/${web.nombre}.js`],
     });
-    await chrome.scripting.insertCSS({
+    chrome.scripting.insertCSS({
       target: { tabId },
       files: [`./styles/${web.nombre}.css`],
     });
   }
 };
 
-chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
+chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   const url = new URL(tab.url);
   for (const web of webs) processSite({ tabId, url, web });
 });
