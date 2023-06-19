@@ -2,18 +2,13 @@
   "background": {
     "service_worker": "./background.js"
   },
-  "content_scripts": [
-    {
-      "matches": [
-        "*://www.elobservador.com.uy/*",
-        "*://elobservador.com.uy/*",
-        "*://www.elpais.com.uy/*",
-        "*://elpais.com.uy/*"
-      ],
-      "js": ["content.js"]
-    }
-  ],
   "description": "Quitando todo lo que complica la lectura de notas en distintos portales de noticias uruguayos.",
+  "host_permissions": [
+    "*://www.elobservador.com.uy/*",
+    "*://elobservador.com.uy/*",
+    "*://www.elpais.com.uy/*",
+    "*://elpais.com.uy/*"
+  ],
   "icons": {
     "16": "./icons/logo16x16.png",
     "32": "./icons/logo32x32.png",
@@ -23,6 +18,22 @@
   },
   "manifest_version": 3,
   "name": "Medios Limpios UY",
-  "permissions": ["tabs", "http://*/*", "https://*/*"],
-  "version": "1.0.0"
+  "permissions": ["tabs", "scripting", "http://*/*", "https://*/*", "storage"],
+  "version": "1.0.60",
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "./js/elobservador.js",
+        "./js/elpais.js",
+        "./styles/elobservador.css",
+        "./styles/elpais.css"
+      ],
+      "matches": [
+        "*://www.elobservador.com.uy/*",
+        "*://elobservador.com.uy/*",
+        "*://www.elpais.com.uy/*",
+        "*://elpais.com.uy/*"
+      ]
+    }
+  ]
 }

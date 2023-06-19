@@ -1,0 +1,5 @@
+@media (min-width: 37.5em) {
+  body.body .detalle--nota {
+    padding-top: 110px;
+  }
+}

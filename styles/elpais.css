@@ -1,0 +1,16 @@
+body .ArticlePage-lede-content:before,
+body .AuthorPage-lede-content:before,
+body .GalleryPage-lede-content:before,
+body .Page-above,
+body *[aria-label="Advertisement"],
+body .Page-above.loaded {
+  display: none !important;
+}
+
+@media only screen and (min-width: 768px) {
+  body .ArticlePage-lede-content,
+  body .AuthorPage-lede-content,
+  body .GalleryPage-lede-content {
+    padding: 3rem 0;
+  }
+}
