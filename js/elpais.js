@@ -71,14 +71,15 @@ if (typeof limpiarElPais !== "function")
             ...document.querySelectorAll(
               `img[src*="securepubads.g.doubleclick.net"]`
             ),
+            ...document.querySelectorAll(`script[src*="adsbygoogle.js"]`),
             ...document.querySelectorAll(`script[src*="brightspotcdn"]`),
-            ...document.querySelectorAll(`script[src*="ev-widgets"]`),
             ...document.querySelectorAll(`script[src*="epd_tools"]`),
             ...document.querySelectorAll(`script[src*="ev-em"]`),
+            ...document.querySelectorAll(`script[src*="ev-widgets"]`),
             ...document.querySelectorAll(`script[src*="pubads_impl"]`),
+            ...document.querySelectorAll(`div[style*="2000000"]`),
             ...document.querySelectorAll(`div[style*="2147483647"]`),
             ...document.querySelectorAll(`div[style*="6000010"]`),
-            ...document.querySelectorAll(`div[style*="2000000"]`),
           ];
 
           // ArticlePage-lede-content
@@ -88,6 +89,30 @@ if (typeof limpiarElPais !== "function")
       })
     );
     observer.observe($body, { childList: true, subtree: true });
+
+    const observer2 = new MutationObserver((mutations) => {
+      mutations.forEach(({ addedNodes }) => {
+        addedNodes.forEach((node) => {
+          // For each added script tag
+          if (node.nodeType === 1 && node.tagName === "SCRIPT") {
+            console.log("node", node);
+            // const src = node.src || "";
+            // const type = node.type;
+            // // If the src is inside your blacklist
+            // if (needsToBeBlacklisted(src, type)) {
+            //   // Do some stuff that will prevent the script tag loading ;)
+            //   // (See below…)
+            // }
+          }
+        });
+      });
+    });
+
+    // Starts the monitoring
+    observer2.observe(document.documentElement, {
+      childList: true,
+      subtree: true,
+    });
   };
 
 if (typeof limpiarElPais === "function") limpiarElPais();
