@@ -82,6 +82,12 @@ body .Page-above.loaded {
 }
 
 @media only screen and (min-width: 768px) {
+  html.AuthorPage body .Page-header,
+  html.ArticlePage body .Page-header,
+  html.GalleryPage body .Page-header {
+    position: fixed;
+  }
+
   body.Page-body,
   body.WhitePage-body {
     max-width: 100%;
@@ -164,6 +170,177 @@ body .Page-above.loaded {
 
   body .toggle-darkmode .slider.round:before {
     border-radius: 50%;
+  }
+
+  body.section-el-empresario .RichTextArticleBody.RichTextBody {
+    display: block !important;
+  }
+  body.section-el-empresario .contenido-exclusivo-nota {
+    display: none !important;
+  }
+
+  html[data-theme="dark"].ArticlePage[data-lead=""]
+    body.article_type_premium
+    .Page-byline,
+  html[data-theme="dark"].ArticlePage[data-lead=""]
+    body.article_type_premium
+    .Page-datePublished,
+  html[data-theme="dark"].ArticlePage[data-lead=""]
+    body.article_type_premium
+    .Page-headline,
+  html[data-theme="dark"].ArticlePage[data-lead=""]
+    body.article_type_premium
+    .Page-subHeadline,
+  html[data-theme="dark"].ArticlePage[data-lead=""]
+    body.article_type_premium
+    .WhitePage-byline,
+  html[data-theme="dark"].ArticlePage[data-lead=""]
+    body.article_type_premium
+    .WhitePage-datePublished,
+  html[data-theme="dark"].ArticlePage[data-lead=""]
+    body.article_type_premium
+    .WhitePage-headline,
+  html[data-theme="dark"].ArticlePage[data-lead=""]
+    body.article_type_premium
+    .WhitePage-subHeadline,
+  html[data-theme="dark"].ArticlePage[data-lead="large"]
+    body.article_type_premium
+    .Page-byline,
+  html[data-theme="dark"].ArticlePage[data-lead="large"]
+    body.article_type_premium
+    .Page-datePublished,
+  html[data-theme="dark"].ArticlePage[data-lead="large"]
+    body.article_type_premium
+    .Page-headline,
+  html[data-theme="dark"].ArticlePage[data-lead="large"]
+    body.article_type_premium
+    .Page-subHeadline,
+  html[data-theme="dark"].ArticlePage[data-lead="large"]
+    body.article_type_premium
+    .WhitePage-byline,
+  html[data-theme="dark"].ArticlePage[data-lead="large"]
+    body.article_type_premium
+    .WhitePage-datePublished,
+  html[data-theme="dark"].ArticlePage[data-lead="large"]
+    body.article_type_premium
+    .WhitePage-headline,
+  html[data-theme="dark"].ArticlePage[data-lead="large"]
+    body.article_type_premium
+    .WhitePage-subHeadline,
+  html[data-theme="dark"].ArticlePage[data-lead="standard"]
+    body.article_type_premium
+    .Page-byline,
+  html[data-theme="dark"].ArticlePage[data-lead="standard"]
+    body.article_type_premium
+    .Page-datePublished,
+  html[data-theme="dark"].ArticlePage[data-lead="standard"]
+    body.article_type_premium
+    .Page-headline,
+  html[data-theme="dark"].ArticlePage[data-lead="standard"]
+    body.article_type_premium
+    .Page-subHeadline,
+  html[data-theme="dark"].ArticlePage[data-lead="standard"]
+    body.article_type_premium
+    .WhitePage-byline,
+  .body
+    ArticlePage[data-lead="standard"]
+    body.article_type_premium
+    .WhitePage-datePublished,
+  html[data-theme="dark"].ArticlePage[data-lead="standard"]
+    body.article_type_premium
+    .WhitePage-headline,
+  html[data-theme="dark"].ArticlePage[data-lead="standard"]
+    body.article_type_premium
+    .WhitePage-subHeadline,
+  html[data-theme="dark"].AuthorPage[data-lead=""]
+    body.article_type_premium
+    .Page-byline,
+  html[data-theme="dark"].AuthorPage[data-lead=""]
+    body.article_type_premium
+    .Page-datePublished,
+  .AuthorPage[data-lead=""] .article_type_premium .Page-headline,
+  html[data-theme="dark"].AuthorPage[data-lead=""]
+    body.article_type_premium
+    .Page-subHeadline,
+  html[data-theme="dark"].AuthorPage[data-lead="large"]
+    body.article_type_premium
+    .Page-byline,
+  html[data-theme="dark"].AuthorPage[data-lead="large"]
+    body.article_type_premium
+    .Page-datePublished,
+  html[data-theme="dark"].AuthorPage[data-lead="large"]
+    body.article_type_premium
+    .Page-headline,
+  html[data-theme="dark"].AuthorPage[data-lead="large"]
+    body.article_type_premium
+    .Page-subHeadline,
+  html[data-theme="dark"].AuthorPage[data-lead="standard"]
+    body.article_type_premium
+    .Page-byline,
+  html[data-theme="dark"].AuthorPage[data-lead="standard"]
+    body.article_type_premium
+    .Page-datePublished,
+  html[data-theme="dark"].AuthorPage[data-lead="standard"]
+    body.article_type_premium
+    .Page-headline,
+  html[data-theme="dark"].AuthorPage[data-lead="standard"]
+    body.article_type_premium
+    .Page-subHeadline,
+  html[data-theme="dark"].GalleryPage[data-lead=""]
+    body.article_type_premium
+    .Page-byline,
+  html[data-theme="dark"].GalleryPage[data-lead=""]
+    body.article_type_premium
+    .Page-datePublished,
+  html[data-theme="dark"].GalleryPage[data-lead=""]
+    body.article_type_premium
+    .Page-headline,
+  html[data-theme="dark"].GalleryPage[data-lead=""]
+    body.article_type_premium
+    .Page-subHeadline,
+  html[data-theme="dark"].GalleryPage[data-lead="large"]
+    body.article_type_premium
+    .Page-byline,
+  html[data-theme="dark"].GalleryPage[data-lead="large"]
+    body.article_type_premium
+    .Page-datePublished,
+  html[data-theme="dark"].GalleryPage[data-lead="large"]
+    body.article_type_premium
+    .Page-headline,
+  html[data-theme="dark"].GalleryPage[data-lead="large"]
+    body.article_type_premium
+    .Page-subHeadline,
+  html[data-theme="dark"].GalleryPage[data-lead="standard"]
+    body.article_type_premium
+    .Page-byline,
+  html[data-theme="dark"].GalleryPage[data-lead="standard"]
+    body.article_type_premium
+    .Page-datePublished,
+  html[data-theme="dark"].GalleryPage[data-lead="standard"]
+    body.article_type_premium
+    .Page-headline,
+  html[data-theme="dark"].GalleryPage[data-lead="standard"]
+    body.article_type_premium
+    .Page-subHeadline {
+    color: var(--color-primary-text);
+  }
+
+  html[data-theme="dark"].ArticlePage
+    body.article_type_premium
+    .RichTextBody
+    .Link {
+    color: var(--color-primary);
+  }
+
+  html[data-theme="dark"].ArticlePage body.article_type_premium .ListData {
+    background: var(--color-footer-border);
+  }
+  html[data-theme="dark"].ArticlePage
+    body.article_type_premium
+    .ListData
+    .List-header-title {
+    background: var(--color-section-premium-secondary);
+    color: var(--color-primary-text-inverse);
   }
 }
 

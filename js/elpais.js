@@ -82,13 +82,35 @@ if (typeof limpiarElPais !== "function")
             ...document.querySelectorAll(`div[style*="6000010"]`),
           ];
 
-          // ArticlePage-lede-content
-
           if (elementos.length > 0) borrarElementos(elementos);
         }
       })
     );
     observer.observe($body, { childList: true, subtree: true });
+
+    const obtenerContenidoNotaEmpresario = () => {
+      const $content = document.querySelector(
+        ".RichTextArticleBody.RichTextBody"
+      );
+      console.log("$content", $content);
+      if ($content !== null) {
+        const contenidoOriginal = $content.innerHTML;
+        const observerContenido = new MutationObserver((mutations) =>
+          mutations.forEach(({ type }) => {
+            if (type === "childList" && $content.innerHTML === "") {
+              $cuerpo.innerHTML = contenidoOriginal;
+              observerContenido.disconnect();
+            }
+            if ($cuerpo.classList.contains("fade"))
+              $cuerpo.classList.remove("fade");
+          })
+        );
+        observerContenido.observe($cuerpo, { childList: true, subtree: true });
+      }
+    };
+
+    if ($body.classList.contains("section-el-empresario"))
+      obtenerContenidoNotaEmpresario();
   };
 
 if (typeof limpiarElPais === "function") limpiarElPais();

@@ -19,7 +19,7 @@
   "manifest_version": 3,
   "name": "Medios Limpios UY",
   "permissions": ["tabs", "scripting", "storage"],
-  "version": "1.0.61",
+  "version": "1.0.63",
   "web_accessible_resources": [
     {
       "resources": [
