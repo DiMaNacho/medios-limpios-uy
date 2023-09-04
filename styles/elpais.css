@@ -328,8 +328,12 @@ body .Page-above.loaded {
   html[data-theme="dark"].ArticlePage
     body.article_type_premium
     .RichTextBody
+    .Link,
+  html[data-theme="dark"].ArticlePage
+    body.article_type_none
+    .RichTextBody
     .Link {
-    color: var(--color-primary);
+    color: #4c87b8;
   }
 
   html[data-theme="dark"].ArticlePage body.article_type_premium .ListData {
@@ -342,7 +346,15 @@ body .Page-above.loaded {
     background: var(--color-section-premium-secondary);
     color: var(--color-primary-text-inverse);
   }
-}
 
-@media only screen and (min-width: 768px) {
+  html[data-theme="dark"].ArticlePage
+    body.article_type_premium
+    .PromoRel
+    .Promo-title:before,
+  html[data-theme="dark"].ArticlePage
+    body.article_type_none
+    .PromoRel
+    .Promo-title:before {
+    color: #1c232f;
+  }
 }
