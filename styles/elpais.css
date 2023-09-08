@@ -82,6 +82,17 @@ body .Page-above.loaded {
 }
 
 @media only screen and (min-width: 768px) {
+  html[data-theme="dark"].ArticlePage
+    body.article_type_premium
+    .Page-content
+    .Page-twoColumn,
+  html[data-theme="dark"].ArticlePage
+    body.article_type_none
+    .Page-content
+    .Page-twoColumn {
+    display: block;
+  }
+
   html.AuthorPage body .Page-header,
   html.ArticlePage body .Page-header,
   html.GalleryPage body .Page-header {
@@ -356,5 +367,79 @@ body .Page-above.loaded {
     .PromoRel
     .Promo-title:before {
     color: #1c232f;
+  }
+  html[data-theme="dark"].ArticlePage body.article_type_premium .ListData,
+  html[data-theme="dark"].ArticlePage body.article_type_none .ListData {
+    background-color: #06416a;
+  }
+
+  html[data-theme="dark"].ArticlePage
+    body.article_type_premium
+    .ListData
+    .List-header-title,
+  html[data-theme="dark"].ArticlePage
+    body.article_type_none
+    .ListData
+    .List-header-title {
+    color: #333333;
+  }
+  html[data-theme="dark"].ArticlePage
+    html[data-theme="dark"].ArticlePage
+    body.article_type_premium
+    .ListFeatured
+    .List-items-item
+    .item-bullet,
+  html[data-theme="dark"].ArticlePage
+    body.article_type_none
+    .ListFeatured
+    .List-items-item
+    .item-bullet {
+    color: #333333;
+  }
+
+  html[data-theme="dark"].ArticlePage
+    body.article_type_premium
+    .Page-header[data-sticky="true"]
+    .Page-header-authentication
+    .AuthenticationNavigation-items-item,
+  html[data-theme="dark"].ArticlePage
+    body.article_type_none
+    .Page-header[data-sticky="true"]
+    .Page-header-authentication
+    .AuthenticationNavigation-items-item {
+    background: #fffffe;
+  }
+
+  html[data-theme="dark"].ArticlePage
+    body.article_type_premium
+    .viafoura
+    .vf-topic-follow-button,
+  html[data-theme="dark"].ArticlePage
+    body.article_type_none
+    .viafoura
+    .vf-topic-follow-button {
+    background: #fffffe;
+  }
+
+  html[data-theme="dark"].ArticlePage
+    body.article_type_premium
+    .ArticlePage-actions-wrapper,
+  html[data-theme="dark"].ArticlePage
+    body.article_type_none
+    .ArticlePage-actions-wrapper {
+    padding-left: 0;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  html[data-theme="dark"].ArticlePage
+    body.article_type_premium
+    .Page-content
+    .Page-twoColumn,
+  html[data-theme="dark"].ArticlePage
+    body.article_type_none
+    .Page-content
+    .Page-twoColumn {
+    display: grid;
   }
 }
